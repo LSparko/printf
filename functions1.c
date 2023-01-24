@@ -27,19 +27,19 @@ int print_unsigned(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int a = BUFF_SIZE - 2;
-	unsigned long int numb = va_arg(types, unsigned long int);
+	unsigned long int num = va_arg(types, unsigned long int);
 
-	numb = convert_size_unsgnd(numb, size);
+	num = convert_size_unsgnd(num, size);
 
-	if (numb == 0)
+	if (num == 0)
 		buffer[a--] = '\0';
 
 	buffer[BUFF_SIZE - 1] = '\0';
 
-	while (numb > 0)
+	while (num > 0)
 	{
-		buffer[a--] = (numb % 10) + '0';
-		numb /= 10;
+		buffer[a--] = (num % 10) + '0';
+		num /= 10;
 	}
 
 	a++;
@@ -63,25 +63,25 @@ int print_octal(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	int a = BUFF_SIZE - 2;
-	unsigned long int numb = va_arg(types, unsigned long int);
-	unsigned long int init_numb = numb;
+	unsigned long int num = va_arg(types, unsigned long int);
+	unsigned long int init_num = num;
 
 	UNUSED(width);
 
-	numb = convert_size_unsgnd(numb, size);
+	num = convert_size_unsgnd(num, size);
 
-	if (numb == 0)
+	if (num == 0)
 		buffer[a--] = '0';
 
 	buffer[BUFF_SIZE - 1] = '\0';
 
-	while (numb > 0)
+	while (num > 0)
 	{
-		buffer[a--] = (numb % 8) + '0';
-		numb /= 8;
+		buffer[a--] = (num % 8) + '0';
+		num /= 8;
 	}
 
-	if (flags & F_HASH && init_numb != 0)
+	if (flags & F_HASH && init_num != 0)
 		buffer[a--] = '0';
 
 	a++;
@@ -145,25 +145,25 @@ int print_hexa(va_list types, char map_to[], char buffer[],
 	int flags, char flag_ch, int width, int precision, int size)
 {
 		int a = BUFF_SIZE - 2;
-		unsigned long int numb = va_arg(types, unsigned long int);
-		unsigned long int init_numb = numb;
+		unsigned long int num = va_arg(types, unsigned long int);
+		unsigned long int init_num = num;
 
 		UNUSED(width);
 
-		numb = convert_size_unsgnd(numb, size);
+		num = convert_size_unsgnd(num, size);
 
-		if (numb == 0)
+		if (num == 0)
 			buffer[a--] = '0';
 
 		buffer[BUFF_SIZE - 1] = '\0';
 
-		while (numb > 0)
+		while (num > 0)
 		{
-			buffer[a--] = map_to[numb % 16];
-			numb /= 16;
+			buffer[a--] = map_to[num % 16];
+			num /= 16;
 		}
 
-		if (flags & F_HASH && init_numb != 0)
+		if (flags & F_HASH && init_num != 0)
 		{
 			buffer[a--] = flag_ch;
 			buffer[a--] = '0';
