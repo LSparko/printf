@@ -23,7 +23,7 @@
  * @fmt: The format.
  * @func: The function associated.
 */
-struct fmt_s
+struct fmt
 {
 	char fmt;
 	int (*func)(va_list, char[], int, int, int, int);
@@ -34,7 +34,7 @@ struct fmt_s
  * @fmt_s: The format.
  * @fm_t: The function associated.
 */
-typedef struct fmt_s fmt_t;
+typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
 int handle_print(const char *fmt, int *i, va_list list,
