@@ -135,7 +135,7 @@ int print_int(va_list types, char buffer[],
 	b = convert_size_number(b, size);
 
 	if (b == 0)
-		buffer[a--] = '\0';
+		buffer[a--] = '0';
 
 	buffer[BUFF_SIZE - 1] = '\0';
 	numb = (unsigned long int)b;
