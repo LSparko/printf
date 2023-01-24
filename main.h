@@ -19,19 +19,19 @@
 #define S_SHORT 1
 
 /**
- * struct fmt_s - Struct op
+ * struct fmt - Struct op
  * @fmt: The format.
- * @func: The function associated.
+ * @fn: The function associated.
 */
 struct fmt
 {
 	char fmt;
-	int (*func)(va_list, char[], int, int, int, int);
+	int (*fn)(va_list, char[], int, int, int, int);
 };
 
 /**
  * typedef struct fmt fmt_t - Struct op
- * @fmt_s: The format.
+ * @fmt: The format.
  * @fm_t: The function associated.
 */
 typedef struct fmt fmt_t;
